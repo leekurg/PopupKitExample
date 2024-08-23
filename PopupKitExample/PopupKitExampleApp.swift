@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct PopupKitExampleApp: App {
-    @UIApplicationDelegateAdaptor var adaptor: PopupKitAppDelegate
+    @UIApplicationDelegateAdaptor var adaptor: MyAppDelegate
 
     var body: some Scene {
         WindowGroup {

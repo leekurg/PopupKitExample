@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainSceneView: View {
-    @EnvironmentObject var sceneDelegate: PopupKitSceneDelegate
+    @EnvironmentObject var sceneDelegate: MySceneDelegate
 
     var body: some View {
         ContentView()
