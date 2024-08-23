@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct PopupKitExampleApp: App {
+    @UIApplicationDelegateAdaptor var adaptor: PopupKitAppDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainSceneView()
         }
     }
 }

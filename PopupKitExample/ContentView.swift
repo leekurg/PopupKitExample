@@ -6,19 +6,36 @@
 //
 
 import SwiftUI
+import PopupKit
 
 struct ContentView: View {
+    @State var selectedTab: Tab = .notification
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selectedTab) {
+            NotificationTest()
+                .tabItem {
+                    Label("Notification", systemImage: "bell")
+                }
+                .tag(Tab.notification)
+            
+            Color.orange
+                .tabItem {
+                    Label("Fullscreen", systemImage: "rectangle.portrait.inset.filled")
+                }
+                .tag(Tab.fullscreen)
         }
-        .padding()
+    }
+}
+
+extension ContentView {
+    enum Tab {
+        case notification
+        case fullscreen
     }
 }
 
 #Preview {
     ContentView()
+        .debugPreviewNotificationEnv()
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E9C969F2C7887C700838F1B /* PopupKitAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C969E2C7887C700838F1B /* PopupKitAppDelegate.swift */; };
+		1E9C96A12C78880300838F1B /* PopupKitSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A02C78880300838F1B /* PopupKitSceneDelegate.swift */; };
+		1E9C96A42C78882F00838F1B /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9C96A32C78882F00838F1B /* PopupKit */; };
+		1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A52C78884300838F1B /* MainSceneView.swift */; };
+		1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A72C7888D200838F1B /* NotificationTest.swift */; };
 		1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */; };
 		1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED51B5A2C78860200CF04B9 /* ContentView.swift */; };
 		1ED51B5D2C78860200CF04B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B5C2C78860200CF04B9 /* Assets.xcassets */; };
@@ -14,12 +19,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E9C969E2C7887C700838F1B /* PopupKitAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupKitAppDelegate.swift; sourceTree = "<group>"; };
+		1E9C96A02C78880300838F1B /* PopupKitSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupKitSceneDelegate.swift; sourceTree = "<group>"; };
+		1E9C96A52C78884300838F1B /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
+		1E9C96A72C7888D200838F1B /* NotificationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTest.swift; sourceTree = "<group>"; };
 		1ED51B552C78860200CF04B9 /* PopupKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopupKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupKitExampleApp.swift; sourceTree = "<group>"; };
 		1ED51B5A2C78860200CF04B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1ED51B5C2C78860200CF04B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ED51B5E2C78860200CF04B9 /* PopupKitExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PopupKitExample.entitlements; sourceTree = "<group>"; };
 		1ED51B602C78860200CF04B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1ED51B672C7886EB00CF04B9 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../../PopupKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +37,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9C96A42C78882F00838F1B /* PopupKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E9C96A22C78882F00838F1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1ED51B4C2C78860200CF04B9 = {
 			isa = PBXGroup;
 			children = (
 				1ED51B572C78860200CF04B9 /* PopupKitExample */,
 				1ED51B562C78860200CF04B9 /* Products */,
+				1E9C96A22C78882F00838F1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +71,16 @@
 		1ED51B572C78860200CF04B9 /* PopupKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				1ED51B672C7886EB00CF04B9 /* PopupKit */,
 				1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */,
 				1ED51B5A2C78860200CF04B9 /* ContentView.swift */,
 				1ED51B5C2C78860200CF04B9 /* Assets.xcassets */,
 				1ED51B5E2C78860200CF04B9 /* PopupKitExample.entitlements */,
 				1ED51B5F2C78860200CF04B9 /* Preview Content */,
+				1E9C969E2C7887C700838F1B /* PopupKitAppDelegate.swift */,
+				1E9C96A02C78880300838F1B /* PopupKitSceneDelegate.swift */,
+				1E9C96A52C78884300838F1B /* MainSceneView.swift */,
+				1E9C96A72C7888D200838F1B /* NotificationTest.swift */,
 			);
 			path = PopupKitExample;
 			sourceTree = "<group>";
@@ -85,6 +109,9 @@
 			dependencies = (
 			);
 			name = PopupKitExample;
+			packageProductDependencies = (
+				1E9C96A32C78882F00838F1B /* PopupKit */,
+			);
 			productName = PopupKitExample;
 			productReference = 1ED51B552C78860200CF04B9 /* PopupKitExample.app */;
 			productType = "com.apple.product-type.application";
@@ -139,8 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9C969F2C7887C700838F1B /* PopupKitAppDelegate.swift in Sources */,
 				1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */,
 				1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */,
+				1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */,
+				1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */,
+				1E9C96A12C78880300838F1B /* PopupKitSceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +390,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E9C96A32C78882F00838F1B /* PopupKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopupKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1ED51B4D2C78860200CF04B9 /* Project object */;
 }
