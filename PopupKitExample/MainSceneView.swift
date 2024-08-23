@@ -13,5 +13,6 @@ struct MainSceneView: View {
     var body: some View {
         ContentView()
             .environmentObject(sceneDelegate.notificationPresenter)
+            .environmentObject(sceneDelegate.fullscreenPresenter)
     }
 }

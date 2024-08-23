@@ -19,7 +19,7 @@ struct ContentView: View {
                 }
                 .tag(Tab.notification)
             
-            Color.orange
+            FullscreenTest()
                 .tabItem {
                     Label("Fullscreen", systemImage: "rectangle.portrait.inset.filled")
                 }
@@ -37,5 +37,6 @@ extension ContentView {
 
 #Preview {
     ContentView()
+        .debugPreviewFullscreenEnv()
         .debugPreviewNotificationEnv()
 }
