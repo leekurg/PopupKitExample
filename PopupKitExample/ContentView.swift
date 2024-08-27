@@ -24,6 +24,12 @@ struct ContentView: View {
                     Label("Fullscreen", systemImage: "rectangle.portrait.inset.filled")
                 }
                 .tag(Tab.fullscreen)
+            
+            CoverTest()
+                .tabItem {
+                    Label("Cover", systemImage: "rectangle.portrait.bottomhalf.inset.filled")
+                }
+                .tag(Tab.cover)
         }
     }
 }
@@ -32,6 +38,7 @@ extension ContentView {
     enum Tab {
         case notification
         case fullscreen
+        case cover
     }
 }
 
@@ -39,4 +46,5 @@ extension ContentView {
     ContentView()
         .debugPreviewFullscreenEnv()
         .debugPreviewNotificationEnv()
+        .debugPreviewCoverEnv(ignoresSafeAreaEdges: .bottom)
 }

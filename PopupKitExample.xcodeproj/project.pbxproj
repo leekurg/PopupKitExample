@@ -17,6 +17,7 @@
 		1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED51B5A2C78860200CF04B9 /* ContentView.swift */; };
 		1ED51B5D2C78860200CF04B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B5C2C78860200CF04B9 /* Assets.xcassets */; };
 		1ED51B612C78860200CF04B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B602C78860200CF04B9 /* Preview Assets.xcassets */; };
+		1EDD579A2C7B0F7700C9D1E3 /* CoverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1ED51B5E2C78860200CF04B9 /* PopupKitExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PopupKitExample.entitlements; sourceTree = "<group>"; };
 		1ED51B602C78860200CF04B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1ED51B672C7886EB00CF04B9 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../../PopupKit; sourceTree = "<group>"; };
+		1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				1E9C96A52C78884300838F1B /* MainSceneView.swift */,
 				1E9C96A72C7888D200838F1B /* NotificationTest.swift */,
 				1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */,
+				1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */,
 			);
 			path = PopupKitExample;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E9C969F2C7887C700838F1B /* MyAppDelegate.swift in Sources */,
+				1EDD579A2C7B0F7700C9D1E3 /* CoverTest.swift in Sources */,
 				1E9C96AA2C78BC2400838F1B /* FullscreenTest.swift in Sources */,
 				1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */,
 				1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */,
