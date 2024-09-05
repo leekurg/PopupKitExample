@@ -34,25 +34,44 @@ struct CoverTest: View {
             Color.mint.frame(height: 150)
             Color.purple.frame(height: 150)
         }
-        .cover(isPresented: $c1) {
+        .cover(isPresented: $c1, background: .gray, modal: .none, cornerRadius: 10) {
             Text("Half sheet 1")
                 .frame(height: 400)
         }
-        .cover(isPresented: $c2) {
-//            Text("Cover 2")
-            Text("Half sheet 2")
-                .padding(50)
-                .frame(height: 400)
+        .cover(isPresented: $c2, modal: .modal(interactivity: .interactive)) {
+            VStack {
+                Text("Half sheet 2")
+                    .padding(50)
+
+                Button("Open C3") {
+                    c3.toggle()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(minHeight: 400)
         }
-        .cover(isPresented: $c3) {
-            Text("Half sheet 3")
-                .padding(50)
-                .frame(height: 400)
+        .cover(
+            isPresented: $c3,
+            background: .brown,
+            modal: .modal(interactivity: .noninteractive),
+            cornerRadius: 50
+        ) {
+            VStack {
+                Text("Half sheet 3")
+                    .padding(50)
+                
+                Button("Close") {
+                    c3.toggle()
+                    print("Tappped")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(minHeight: 600)
         }
     }
 }
 
 #Preview {
     CoverTest()
-        .debugPreviewCoverEnv(ignoresSafeAreaEdges: .bottom)
+        .debugPreviewCoverEnv(ignoresSafeAreaEdges: [.bottom])
 }

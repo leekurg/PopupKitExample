@@ -45,6 +45,11 @@ fileprivate struct ViewA: View {
                     fullscreenPresenter.popLast()
                 }
                 .buttonStyle(.bordered)
+                
+//                Button("") {
+//                    fullscreenPresenter.popLast()
+//                }
+//                .buttonStyle(.bordered)
             }
             .fullscreen(isPresented: $f1) {
                 ViewA(deep: deep + 1)
