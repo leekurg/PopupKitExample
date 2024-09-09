@@ -10,13 +10,20 @@ import SwiftUI
 
 struct FullscreenTest: View {
     @State private var f1 = false
+    @State private var fc = false
 
     var body: some View {
         ZStack {
             Color.red.opacity(0.3)
             
-            Button("Full 1") {
-                f1.toggle()
+            VStack {
+                Button("PopupKit fullscreen") {
+                    f1.toggle()
+                }
+                
+                Button("System fullscreen") {
+                    fc.toggle()
+                }
             }
             .buttonStyle(.borderedProminent)
         }
@@ -27,6 +34,9 @@ struct FullscreenTest: View {
             dismissalScroll: .none
         ) {
             ViewA(deep: 0)
+        }
+        .fullScreenCover(isPresented: $fc) {
+            ViewB(deep: 0)
         }
     }
 }
@@ -40,7 +50,7 @@ fileprivate struct ViewA: View {
 
     var body: some View {
         VStack {
-            Text("Fullscreen \(deep)")
+            Text("Fullscreen #\(deep)")
                 .font(.title)
             
             Spacer()
@@ -77,6 +87,31 @@ fileprivate struct ViewA: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .border(.red)
                 .ignoresSafeArea(.all, edges: .top)
+        }
+    }
+}
+
+fileprivate struct ViewB: View {
+    let deep: Int
+    @State var fc = false
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        VStack {
+            Text("System fullscreen #\(deep)")
+            
+            Button("Open") {
+                fc.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Close") {
+                dismiss()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .fullScreenCover(isPresented: $fc) {
+            ViewB(deep: deep + 1)
         }
     }
 }
