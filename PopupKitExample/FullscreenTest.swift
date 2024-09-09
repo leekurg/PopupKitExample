@@ -118,5 +118,5 @@ fileprivate struct ViewB: View {
 
 #Preview {
     FullscreenTest()
-        .debugPreviewFullscreenEnv(ignoresSafeAreaEdges: .all)
+        .previewPopupKit(.fullscreen)
 }

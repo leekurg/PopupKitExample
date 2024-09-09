@@ -91,5 +91,5 @@ struct CoverTest: View {
 
 #Preview {
     CoverTest()
-        .debugPreviewCoverEnv(ignoresSafeAreaEdges: .all)
+        .previewPopupKit(.cover(ignoredSafeAreaEdges: .all))
 }

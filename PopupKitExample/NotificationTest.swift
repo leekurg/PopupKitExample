@@ -215,5 +215,5 @@ struct NotificationViewB: View {
 
 #Preview {
     NotificationTest()
-        .debugPreviewNotificationEnv()
+        .previewPopupKit(.notification)
 }

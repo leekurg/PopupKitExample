@@ -44,7 +44,5 @@ extension ContentView {
 
 #Preview {
     ContentView()
-        .debugPreviewFullscreenEnv()
-        .debugPreviewNotificationEnv()
-        .debugPreviewCoverEnv(ignoresSafeAreaEdges: .bottom)
+        .previewPopupKit(ignoresSafeAreaEdges: .bottom)
 }
