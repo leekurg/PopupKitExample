@@ -120,8 +120,14 @@ struct NotificationTest: View {
             .sheet(isPresented: $isSheet) {
                 NotificationViewB(isPresented: $isSheet)
             }
-            .notification(isPresented: $n1, expiration: .never, background: .default) {
+            .notification(isPresented: $n1, expiration: .never) {
                 Text("Continuous notification 1")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, minHeight: 100)
+                    .background(.orange)
+                    .clipShape(Capsule())
+                    .padding(.horizontal)
             }
             .notification(isPresented: $n2, expiration: .never) {
                 Rectangle()
@@ -133,15 +139,38 @@ struct NotificationTest: View {
             }
             .notification(isPresented: $n3, expiration: .never) {
                 Rectangle()
-                    .fill(.thinMaterial)
+                    .fill(.background)
                     .overlay {
                         Text("Continuous Notification 3")
                     }
+                    .overlay(
+                        Rectangle()
+                            .strokeBorder(
+                                .green,
+                                style: .init(
+                                    lineWidth: 3,
+                                    lineCap: .round,
+                                    dash: [5,5]
+                                )
+                            )
+                    )
                     .frame(height: 300)
                     .frame(maxHeight: .infinity)
             }
             .notification(isPresented: $n4) {
                 Text("Notification 4")
+                    .frame(maxWidth: .infinity, minHeight: 100)
+                    .background {
+                        RoundedRectangle(cornerRadius: 30)
+                            .fill(.thinMaterial)
+                            .overlay {
+                                ContainerRelativeShape()
+                                    .stroke(.blue, lineWidth: 0.5)
+                                    .padding(5)
+                            }
+                    }
+                    .containerShape(RoundedRectangle(cornerRadius: 30))
+                    .padding(.horizontal)
             }
         }
     }
