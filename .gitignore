@@ -1,3 +1,4 @@
 *.xcscheme
 PopupKitExample.xcodeproj/xcuserdata/anikin.xcuserdatad/xcschemes/xcschememanagement.plist
 *.xcbkptlist
+*.resolved

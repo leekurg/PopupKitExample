@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0AA87F2C94816B005197C3 /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0AA87E2C94816B005197C3 /* PopupKit */; };
 		1E9C969F2C7887C700838F1B /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */; };
 		1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A02C78880300838F1B /* MySceneDelegate.swift */; };
-		1E9C96A42C78882F00838F1B /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9C96A32C78882F00838F1B /* PopupKit */; };
 		1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A52C78884300838F1B /* MainSceneView.swift */; };
 		1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A72C7888D200838F1B /* NotificationTest.swift */; };
 		1E9C96AA2C78BC2400838F1B /* FullscreenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */; };
@@ -32,7 +32,6 @@
 		1ED51B5C2C78860200CF04B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ED51B5E2C78860200CF04B9 /* PopupKitExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PopupKitExample.entitlements; sourceTree = "<group>"; };
 		1ED51B602C78860200CF04B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1ED51B672C7886EB00CF04B9 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../../PopupKit; sourceTree = "<group>"; };
 		1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E9C96A42C78882F00838F1B /* PopupKit in Frameworks */,
+				1E0AA87F2C94816B005197C3 /* PopupKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +74,6 @@
 		1ED51B572C78860200CF04B9 /* PopupKitExample */ = {
 			isa = PBXGroup;
 			children = (
-				1ED51B672C7886EB00CF04B9 /* PopupKit */,
 				1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */,
 				1ED51B5A2C78860200CF04B9 /* ContentView.swift */,
 				1ED51B5C2C78860200CF04B9 /* Assets.xcassets */,
@@ -116,7 +114,7 @@
 			);
 			name = PopupKitExample;
 			packageProductDependencies = (
-				1E9C96A32C78882F00838F1B /* PopupKit */,
+				1E0AA87E2C94816B005197C3 /* PopupKit */,
 			);
 			productName = PopupKitExample;
 			productReference = 1ED51B552C78860200CF04B9 /* PopupKitExample.app */;
@@ -146,6 +144,9 @@
 				Base,
 			);
 			mainGroup = 1ED51B4C2C78860200CF04B9;
+			packageReferences = (
+				1E0AA87D2C94816B005197C3 /* XCRemoteSwiftPackageReference "PopupKit" */,
+			);
 			productRefGroup = 1ED51B562C78860200CF04B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -399,9 +400,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		1E0AA87D2C94816B005197C3 /* XCRemoteSwiftPackageReference "PopupKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leekurg/PopupKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		1E9C96A32C78882F00838F1B /* PopupKit */ = {
+		1E0AA87E2C94816B005197C3 /* PopupKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 1E0AA87D2C94816B005197C3 /* XCRemoteSwiftPackageReference "PopupKit" */;
 			productName = PopupKit;
 		};
 /* End XCSwiftPackageProductDependency section */
