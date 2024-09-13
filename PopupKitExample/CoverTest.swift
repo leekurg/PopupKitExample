@@ -7,6 +7,7 @@
 
 import PopupKit
 import SwiftUI
+import PopupKit
 
 struct CoverTest: View {
     @State private var c1 = false
@@ -18,70 +19,76 @@ struct CoverTest: View {
     
     @EnvironmentObject var presenter: CoverPresenter
     
+    @EnvironmentObject var presenter: CoverPresenter
+    
     var body: some View {
-        ScrollView {
-            Button("Non-modal half sheet 1") {
-                c1.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Modal interactive half sheet 2") {
-                c2.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Modal non-interactive 3/4 sheet 3") {
-                c3.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Modal interactive very high sheet 4") {
-                c4.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Modal interactive item sheet") {
-                ci = ci == nil ? MyIdent(id: UUID(), value: 3) : nil
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Presenter present sheet") {
-                presenter.present(
-                    id: UUID(),
-                    modal: .none,
-                    background: .red,
-                    cornerRadius: 30
-                ) {
-                    Text("Presented by presenter")
-                        .foregroundStyle(.white)
-                        .frame(height: 300)
+        NavigationStack {
+            ZStack {
+                Color.mint
+                
+                VStack {
+                    Button("Non-modal material cover") {
+                        c1.toggle()
+                    }
+                    
+                    Button("Modal interactive cover") {
+                        c2.toggle()
+                    }
+                    
+                    Button("Modal non-interactive cover") {
+                        c3.toggle()
+                    }
+                    
+                    Button("Modal interactive too high cover") {
+                        c4.toggle()
+                    }
                 }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
-            
-            Button("Sheet with navigation") {
-                cNavigation.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-            
-            Spacer(minLength: 300)
-            
-            Color.mint.frame(height: 150)
-            Color.purple.frame(height: 150)
+            .ignoresSafeArea()
+            .navigationTitle("Cover")
         }
-        .cover(isPresented: $c1, background: .gray, modal: .none, cornerRadius: 10) {
-            Text("Non-modal half sheet 1")
-                .frame(height: 400)
+        .cover(
+            isPresented: $c1,
+            background: .ultraThinMaterial,
+            modal: .none,
+            cornerRadius: 0
+        ) {
+            VStack {
+                Text("Root view is interactive!")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.blue)
+                    .padding()
+                
+                Button("Open another one") {
+                    presenter.present(
+                        id: UUID(),
+                        modal: .none,
+                        background: .ultraThinMaterial
+                    ) {
+                        Text("Nicely stacked!")
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .foregroundStyle(.blue)
+                            .frame(height: 400)
+                            .padding()
+                    }
+                }
+                .buttonStyle(.bordered)
+            }
+            .frame(height: 400)
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .topLeading) {
+                Text("Respects content size")
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundStyle(.white)
+            }
+            .border(.white)
+            .padding()
         }
         .cover(isPresented: $c2, modal: .modal(interactivity: .interactive)) {
             VStack {
-                Text("Modal interactive half sheet 2")
-                    .padding(50)
-
-                Button("Open sheet 3") {
-                    c3.toggle()
-                }
-                .buttonStyle(.borderedProminent)
+                Text("Tap on root view is closing the cover!")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
             }
             .frame(minHeight: 400)
         }
@@ -89,31 +96,44 @@ struct CoverTest: View {
             isPresented: $c3,
             background: .brown,
             modal: .modal(interactivity: .noninteractive),
-            cornerRadius: 50
+            cornerRadius: 30
         ) {
             VStack {
-                Text("Modal non-interactive 3/4 sheet 3")
-                    .padding(50)
-                
-                Button("Close") {
-                    c3.toggle()
-                }
-                .buttonStyle(.borderedProminent)
+                Text("Doesn't allows to scroll down or tap on root view")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30)
             }
-            .frame(minHeight: 600)
+            .frame(maxWidth: .infinity, minHeight: 600)
+            .overlay(alignment: .topTrailing) {
+                Button {
+                    presenter.popLast()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                        .padding(10)
+                        .background(.white.opacity(0.2), in: Circle())
+                        .foregroundStyle(.gray)
+                }
+                .padding()
+            }
         }
         .cover(
             isPresented: $c4,
-            background: .indigo,
+            background: .ultraThinMaterial,
             modal: .modal(interactivity: .interactive)
         ) {
             VStack(spacing: 0) {
-                Color.red.frame(height: 300)
-                Color.yellow.frame(height: 300)
-                Color.green.frame(height: 252)
-                Color.blue.frame(height: 100)
+                Color.cyan.frame(height: 300).overlay { Text("300x300") }
+                Color.blue.frame(height: 300).overlay { Text("300x300") }
+                Color.indigo.frame(height: 300).overlay { Text("300x300") }
+                Color.green.frame(height: 300).overlay { Text("300x300") }
             }
             .frame(width: 300)
+            .font(.system(size: 30, weight: .bold, design: .rounded))
+            .foregroundStyle(.white)
         }
         .cover(
             item: $ci,
