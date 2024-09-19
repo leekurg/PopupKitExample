@@ -5,6 +5,7 @@
 //  Created by Илья Аникин on 25.08.2024.
 //
 
+import PopupKit
 import SwiftUI
 
 struct CoverTest: View {
@@ -12,6 +13,9 @@ struct CoverTest: View {
     @State private var c2 = false
     @State private var c3 = false
     @State private var c4 = false
+    @State private var ci: MyIdent?
+    
+    @EnvironmentObject var presenter: CoverPresenter
     
     var body: some View {
         ScrollView {
@@ -32,6 +36,25 @@ struct CoverTest: View {
             
             Button("Modal interactive very high sheet 4") {
                 c4.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Modal interactive item sheet") {
+                ci = ci == nil ? MyIdent(id: UUID(), value: 3) : nil
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Presenter present sheet") {
+                presenter.present(
+                    id: UUID(),
+                    modal: .none,
+                    background: .red,
+                    cornerRadius: 30
+                ) {
+                    Text("Presented by presenter")
+                        .foregroundStyle(.white)
+                        .frame(height: 300)
+                }
             }
             .buttonStyle(.borderedProminent)
             
@@ -86,6 +109,23 @@ struct CoverTest: View {
             }
             .frame(width: 300)
         }
+        .cover(
+            item: $ci,
+            background: .blue,
+            modal: .modal(interactivity: .interactive)
+        ) { item in
+            Text("Item sheet with value \(item.value)")
+                .foregroundStyle(.white)
+                .font(.system(.title, design: .rounded, weight: .bold))
+                .frame(height: 500)
+        }
+    }
+}
+
+extension CoverTest {
+    struct MyIdent: Identifiable {
+        let id: UUID
+        let value: Int
     }
 }
 

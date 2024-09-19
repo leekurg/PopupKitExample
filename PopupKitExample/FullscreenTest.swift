@@ -10,7 +10,8 @@ import SwiftUI
 
 struct FullscreenTest: View {
     @State private var f1 = false
-    @State private var fc = false
+    @State private var fi: MyIdent?
+    @State private var fs = false
 
     var body: some View {
         ZStack {
@@ -21,8 +22,12 @@ struct FullscreenTest: View {
                     f1.toggle()
                 }
                 
+                Button("PopupKit item fullscreen") {
+                    fi = fi == nil ? MyIdent(id: UUID(), value: 3) : nil
+                }
+
                 Button("System fullscreen") {
-                    fc.toggle()
+                    fs.toggle()
                 }
             }
             .buttonStyle(.borderedProminent)
@@ -35,9 +40,56 @@ struct FullscreenTest: View {
         ) {
             ViewA(deep: 0)
         }
-        .fullScreenCover(isPresented: $fc) {
+        .fullscreen(
+            item: $fi,
+            background: .green
+        ) { item in
+            Text("Fullscreen with item \(item.value)")
+        }
+        .fullScreenCover(isPresented: $fs) {
             ViewB(deep: 0)
         }
+    }
+}
+
+struct FullWithText: View {
+    @FocusState private var focused: Focused?
+    @State var text = ""
+
+    var body: some View {
+        ScrollView {
+            VStack {
+                ForEach(1...10, id: \.self) { id in
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.gray)
+                        .frame(height: 100)
+                        .overlay {
+                            Text("\(id)")
+                        }
+                }
+            }
+        }
+        .clipped()
+        .border(.red)
+    }
+    
+    var textField: some View {
+        TextField("Title", text: $text, axis: .horizontal)
+            .padding(10)
+            .background(.ultraThinMaterial, in: Capsule())
+            .padding()
+            .focused($focused, equals: .textField)
+    }
+    
+    enum Focused {
+        case textField
+    }
+}
+
+extension FullscreenTest {
+    struct MyIdent: Identifiable {
+        let id: UUID
+        let value: Int
     }
 }
 
