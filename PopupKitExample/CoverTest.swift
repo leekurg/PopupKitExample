@@ -13,6 +13,7 @@ struct CoverTest: View {
     @State private var c2 = false
     @State private var c3 = false
     @State private var c4 = false
+    @State private var cNavigation = false
     @State private var ci: MyIdent?
     
     @EnvironmentObject var presenter: CoverPresenter
@@ -55,6 +56,11 @@ struct CoverTest: View {
                         .foregroundStyle(.white)
                         .frame(height: 300)
                 }
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button("Sheet with navigation") {
+                cNavigation.toggle()
             }
             .buttonStyle(.borderedProminent)
             
@@ -118,6 +124,18 @@ struct CoverTest: View {
                 .foregroundStyle(.white)
                 .font(.system(.title, design: .rounded, weight: .bold))
                 .frame(height: 500)
+        }
+        .cover(
+            isPresented: $cNavigation,
+            background: .indigo,
+            modal: .none
+        ) {
+            NavigationView {
+                Button("Button") {
+                    print("Tapped")
+                }
+                .navigationTitle("Title")
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ struct FullscreenTest: View {
     @State private var f1 = false
     @State private var fi: MyIdent?
     @State private var fs = false
+    @State private var fNavigation = false
 
     var body: some View {
         ZStack {
@@ -25,6 +26,11 @@ struct FullscreenTest: View {
                 Button("PopupKit item fullscreen") {
                     fi = fi == nil ? MyIdent(id: UUID(), value: 3) : nil
                 }
+                
+                Button("Navigatable fullscreen") {
+                    fNavigation.toggle()
+                }
+                .buttonStyle(.bordered)
 
                 Button("System fullscreen") {
                     fs.toggle()
@@ -46,43 +52,17 @@ struct FullscreenTest: View {
         ) { item in
             Text("Fullscreen with item \(item.value)")
         }
+        .fullscreen(
+            isPresented: $fNavigation,
+            background: .ultraThinMaterial,
+            ignoresEdges: [.all],
+            dismissalScroll: .none
+        ) {
+            NavigatableFullscreen()
+        }
         .fullScreenCover(isPresented: $fs) {
             ViewB(deep: 0)
         }
-    }
-}
-
-struct FullWithText: View {
-    @FocusState private var focused: Focused?
-    @State var text = ""
-
-    var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(1...10, id: \.self) { id in
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.gray)
-                        .frame(height: 100)
-                        .overlay {
-                            Text("\(id)")
-                        }
-                }
-            }
-        }
-        .clipped()
-        .border(.red)
-    }
-    
-    var textField: some View {
-        TextField("Title", text: $text, axis: .horizontal)
-            .padding(10)
-            .background(.ultraThinMaterial, in: Capsule())
-            .padding()
-            .focused($focused, equals: .textField)
-    }
-    
-    enum Focused {
-        case textField
     }
 }
 
@@ -141,6 +121,44 @@ fileprivate struct ViewA: View {
                 .ignoresSafeArea(.all, edges: .top)
         }
     }
+}
+
+struct NavigatableFullscreen: View {
+    @State var path = NavigationPath()
+    @EnvironmentObject var presenter: FullscreenPresenter
+    
+    var body: some View {
+        NavigationStack(path: $path) {
+            ScrollView {
+                VStack {
+                    Button("Open next screen") {
+                        path.append(Destination())
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button("Close") {
+                        presenter.popLast()
+                    }
+                    .buttonStyle(.bordered)
+                }
+                .padding(.top, 50)
+            }
+            .navigationTitle("Combined")
+            .navigationDestination(for: Destination.self) { _ in
+                ScrollView {
+                    Color.purple
+                        .frame(height: 500)
+                        .overlay {
+                            Text("Hello, World!")
+                                .foregroundStyle(.white)
+                                .navigationTitle("Second screen")
+                        }
+                }
+            }
+        }
+    }
+    
+    struct Destination: Hashable { }
 }
 
 fileprivate struct ViewB: View {
