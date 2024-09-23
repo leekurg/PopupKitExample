@@ -9,7 +9,7 @@ import SwiftUI
 import PopupKit
 
 struct ContentView: View {
-    @State var selectedTab: Tab = .notification
+    @State var selectedTab: Tab = .confirm
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -30,6 +30,12 @@ struct ContentView: View {
                     Label("Cover", systemImage: "rectangle.portrait.bottomhalf.inset.filled")
                 }
                 .tag(Tab.cover)
+            
+            ConfirmTest()
+                .tabItem {
+                    Label("Confirm", systemImage: "checkmark.circle")
+                }
+                .tag(Tab.confirm)
         }
     }
 }
@@ -39,6 +45,7 @@ extension ContentView {
         case notification
         case fullscreen
         case cover
+        case confirm
     }
 }
 
