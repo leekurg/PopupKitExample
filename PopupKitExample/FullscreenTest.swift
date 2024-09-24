@@ -30,11 +30,11 @@ struct FullscreenTest: View {
                 Button("Navigatable fullscreen") {
                     fNavigation.toggle()
                 }
-                .buttonStyle(.bordered)
 
                 Button("System fullscreen") {
                     fs.toggle()
                 }
+                .buttonStyle(.bordered)
             }
             .buttonStyle(.borderedProminent)
         }

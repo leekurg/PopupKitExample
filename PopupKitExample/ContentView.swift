@@ -9,7 +9,7 @@ import SwiftUI
 import PopupKit
 
 struct ContentView: View {
-    @State var selectedTab: Tab = .confirm
+    @State var selectedTab: Tab = .notification
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -33,7 +33,7 @@ struct ContentView: View {
             
             ConfirmTest()
                 .tabItem {
-                    Label("Confirm", systemImage: "checkmark.circle")
+                    Label("Confirm", systemImage: "rectangle.grid.1x2.fill")
                 }
                 .tag(Tab.confirm)
         }
