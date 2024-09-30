@@ -70,8 +70,7 @@ struct CoverTest: View {
             Color.purple.frame(height: 150)
         }
         .cover(isPresented: $c1, background: .gray, modal: .none, cornerRadius: 10) {
-            Text("Non-modal half sheet 1")
-                .frame(height: 400)
+            C1Cover()
         }
         .cover(isPresented: $c2, modal: .modal(interactivity: .interactive)) {
             VStack {
@@ -91,16 +90,7 @@ struct CoverTest: View {
             modal: .modal(interactivity: .noninteractive),
             cornerRadius: 50
         ) {
-            VStack {
-                Text("Modal non-interactive 3/4 sheet 3")
-                    .padding(50)
-                
-                Button("Close") {
-                    c3.toggle()
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .frame(minHeight: 600)
+            C3Cover()
         }
         .cover(
             isPresented: $c4,
@@ -138,6 +128,59 @@ struct CoverTest: View {
             }
         }
     }
+}
+
+struct C1Cover: View {
+    @State var text = ""
+    @FocusState fileprivate var focus: Focused?
+
+    var body: some View {
+        VStack {
+            Text("Non-modal half sheet 1")
+            
+            TextField("Textfield", text: $text)
+                .padding()
+                .background(.ultraThinMaterial, in: Capsule())
+                .padding()
+                .focused($focus, equals: .textfield)
+        }
+        .frame(minHeight: 400)
+        .onAppear {
+            focus = .textfield
+        }
+    }
+}
+
+struct C3Cover: View {
+    @State var text = ""
+    @FocusState fileprivate var focus: Focused?
+    @EnvironmentObject var presenter: CoverPresenter
+
+    var body: some View {
+        VStack {
+            Text("Modal non-interactive 3/4 sheet 3")
+                .padding(50)
+            
+            TextField("Textfield", text: $text)
+                .padding()
+                .background(.ultraThinMaterial, in: Capsule())
+                .padding()
+                .focused($focus, equals: .textfield)
+            
+            Button("Close") {
+                presenter.popLast()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .frame(minHeight: 800)
+        .onAppear {
+            focus = .textfield
+        }
+    }
+}
+
+fileprivate enum Focused {
+    case textfield
 }
 
 extension CoverTest {

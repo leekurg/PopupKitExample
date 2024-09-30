@@ -28,8 +28,7 @@ struct MainSceneView: View {
 
     var body: some View {
         ContentView()
-//            .coverRoot()
-//            .ignoresSafeArea(.all, edges: [.all])
+            .coverRoot()
             .fullscreenRoot()
 //            .notificationRoot()
             .environmentObject(coverPresenter)
