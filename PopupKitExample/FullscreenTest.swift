@@ -124,6 +124,7 @@ fileprivate struct ViewA: View {
 }
 
 struct NavigatableFullscreen: View {
+    @State var text = ""
     @State var path = NavigationPath()
     @EnvironmentObject var presenter: FullscreenPresenter
     
@@ -131,6 +132,10 @@ struct NavigatableFullscreen: View {
         NavigationStack(path: $path) {
             ScrollView {
                 VStack {
+                    TextField("Textfield", text: $text)
+                        .padding()
+                        .background(.ultraThinMaterial, in: Capsule())
+
                     Button("Open next screen") {
                         path.append(Destination())
                     }
@@ -140,6 +145,8 @@ struct NavigatableFullscreen: View {
                         presenter.popLast()
                     }
                     .buttonStyle(.bordered)
+
+                    colorStrips
                 }
                 .padding(.top, 50)
             }
@@ -157,7 +164,19 @@ struct NavigatableFullscreen: View {
             }
         }
     }
-    
+
+    var colorStrips: some View {
+        VStack(spacing: 0) {
+            Color.red.frame(height: 100)
+            Color.orange.frame(height: 100)
+            Color.yellow.frame(height: 100)
+            Color.green.frame(height: 100)
+            Color.mint.frame(height: 100)
+            Color.blue.frame(height: 100)
+            Color.purple.frame(height: 100)
+        }
+    }
+
     struct Destination: Hashable { }
 }
 
