@@ -9,7 +9,7 @@ import SwiftUI
 import PopupKit
 
 struct ContentView: View {
-    @State var selectedTab: Tab = .notification
+    @State var selectedTab: Tab = .fullscreen
     
     var body: some View {
         TabView(selection: $selectedTab) {

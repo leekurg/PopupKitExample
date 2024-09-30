@@ -50,7 +50,7 @@ struct FullscreenTest: View {
             item: $fi,
             background: .green
         ) { item in
-            Text("Fullscreen with item \(item.value)")
+            ItemFullscreen()
         }
         .fullscreen(
             isPresented: $fNavigation,
@@ -62,6 +62,8 @@ struct FullscreenTest: View {
         }
         .fullScreenCover(isPresented: $fs) {
             ViewB(deep: 0)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .border(.green)
         }
     }
 }
@@ -146,7 +148,7 @@ struct NavigatableFullscreen: View {
                     }
                     .buttonStyle(.bordered)
 
-                    colorStrips
+                    ColorStrips()
                 }
                 .padding(.top, 50)
             }
@@ -162,18 +164,6 @@ struct NavigatableFullscreen: View {
                         }
                 }
             }
-        }
-    }
-
-    var colorStrips: some View {
-        VStack(spacing: 0) {
-            Color.red.frame(height: 100)
-            Color.orange.frame(height: 100)
-            Color.yellow.frame(height: 100)
-            Color.green.frame(height: 100)
-            Color.mint.frame(height: 100)
-            Color.blue.frame(height: 100)
-            Color.purple.frame(height: 100)
         }
     }
 
@@ -203,6 +193,52 @@ fileprivate struct ViewB: View {
             ViewB(deep: deep + 1)
         }
     }
+}
+
+struct ItemFullscreen: View {
+    @State var text = ""
+    @EnvironmentObject var presenter: FullscreenPresenter
+
+    var body: some View {
+//        ScrollView {
+            VStack {
+                Button("Close") {
+                    presenter.popLast()
+                }
+                .buttonStyle(.borderedProminent)
+                
+                Text("Fullscreen with item presentation")
+            
+                TextField("Textfield", text: $text)
+                    .padding()
+                    .background(.ultraThinMaterial, in: Capsule())
+                
+//                ColorStrips()
+            }
+//        }
+    }
+}
+
+struct ColorStrips: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Color.red.frame(height: 100)
+            Color.orange.frame(height: 100)
+            Color.yellow.frame(height: 100)
+            Color.green.frame(height: 100)
+            Color.mint.frame(height: 100)
+            Color.blue.frame(height: 100)
+            Color.purple.frame(height: 100)
+        }
+    }
+}
+
+#Preview {
+    ColorStrips()
+}
+
+#Preview {
+    ItemFullscreen()
 }
 
 #Preview {
