@@ -19,11 +19,11 @@
 		1ED51B5D2C78860200CF04B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B5C2C78860200CF04B9 /* Assets.xcassets */; };
 		1ED51B612C78860200CF04B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B602C78860200CF04B9 /* Preview Assets.xcassets */; };
 		1EDD579A2C7B0F7700C9D1E3 /* CoverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */; };
-		1EE56E1B2CADB81C002D5E17 /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE56E1A2CADB81C002D5E17 /* PopupKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E2A9D8D2CA2137A00901B10 /* ConfirmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTest.swift; sourceTree = "<group>"; };
+		1E8E05172CADB87000B70B71 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../PopupKit; sourceTree = SOURCE_ROOT; };
 		1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
 		1E9C96A02C78880300838F1B /* MySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySceneDelegate.swift; sourceTree = "<group>"; };
 		1E9C96A52C78884300838F1B /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
@@ -43,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE56E1B2CADB81C002D5E17 /* PopupKit in Frameworks */,
 				1E366AF82CA1E598008A649A /* PopupKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +77,7 @@
 		1ED51B572C78860200CF04B9 /* PopupKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				1E8E05172CADB87000B70B71 /* PopupKit */,
 				1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */,
 				1ED51B5A2C78860200CF04B9 /* ContentView.swift */,
 				1ED51B5C2C78860200CF04B9 /* Assets.xcassets */,
@@ -120,7 +120,6 @@
 			name = PopupKitExample;
 			packageProductDependencies = (
 				1E366AF72CA1E598008A649A /* PopupKit */,
-				1EE56E1A2CADB81C002D5E17 /* PopupKit */,
 			);
 			productName = PopupKitExample;
 			productReference = 1ED51B552C78860200CF04B9 /* PopupKitExample.app */;
@@ -151,7 +150,6 @@
 			);
 			mainGroup = 1ED51B4C2C78860200CF04B9;
 			packageReferences = (
-				1EE56E192CADB81C002D5E17 /* XCRemoteSwiftPackageReference "PopupKit" */,
 			);
 			productRefGroup = 1ED51B562C78860200CF04B9 /* Products */;
 			projectDirPath = "";
@@ -407,25 +405,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		1EE56E192CADB81C002D5E17 /* XCRemoteSwiftPackageReference "PopupKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/leekurg/PopupKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		1E366AF72CA1E598008A649A /* PopupKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = PopupKit;
-		};
-		1EE56E1A2CADB81C002D5E17 /* PopupKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1EE56E192CADB81C002D5E17 /* XCRemoteSwiftPackageReference "PopupKit" */;
 			productName = PopupKit;
 		};
 /* End XCSwiftPackageProductDependency section */
