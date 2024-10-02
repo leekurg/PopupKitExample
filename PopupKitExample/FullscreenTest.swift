@@ -12,6 +12,7 @@ struct FullscreenTest: View {
     @State private var f1 = false
     @State private var fi: MyIdent?
     @State private var fs = false
+    @State private var ft = false
     @State private var fNavigation = false
 
     var body: some View {
@@ -25,6 +26,10 @@ struct FullscreenTest: View {
                 
                 Button("PopupKit item fullscreen") {
                     fi = fi == nil ? MyIdent(id: UUID(), value: 3) : nil
+                }
+                
+                Button("PopupKit text fullscreen") {
+                    ft.toggle()
                 }
                 
                 Button("Navigatable fullscreen") {
@@ -53,6 +58,12 @@ struct FullscreenTest: View {
             Text("Fullscreen with item \(item.value)")
         }
         .fullscreen(
+            isPresented: $ft,
+            background: .brown
+        ) {
+            TextFullscreen()
+        }
+        .fullscreen(
             isPresented: $fNavigation,
             background: .ultraThinMaterial,
             ignoresEdges: [.all],
@@ -61,7 +72,10 @@ struct FullscreenTest: View {
             NavigatableFullscreen()
         }
         .fullScreenCover(isPresented: $fs) {
-            ViewB(deep: 0)
+            TextField("", text: .constant(""))
+                .padding()
+                .background(.ultraThinMaterial, in: Capsule())
+                .padding()
         }
     }
 }
@@ -120,6 +134,24 @@ fileprivate struct ViewA: View {
                 .border(.red)
                 .ignoresSafeArea(.all, edges: .top)
         }
+    }
+}
+
+fileprivate struct TextFullscreen: View {
+    @FocusState var focused: Focused?
+    @State var text: String = ""
+
+    var body: some View {
+        TextField("Textfield", text: $text)
+            .padding()
+            .background(.ultraThinMaterial, in: Capsule())
+            .padding()
+            .focused($focused, equals: .textfield)
+            .onAppear { focused = .textfield }
+    }
+    
+    enum Focused {
+        case textfield
     }
 }
 
