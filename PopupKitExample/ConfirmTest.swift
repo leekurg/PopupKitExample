@@ -2,14 +2,16 @@
 //  ConfirmTest.swift
 //  PopupKitExample
 //
-//  Created by Илья Аникин on 23.10.2024.
+//  Created by Илья Аникин on 02.10.2024.
 //
 
-import PopupKit
+
 import SwiftUI
 
 struct ConfirmTest: View {
     @State var c1: Bool = false
+    @State var cItem: MyIdent?
+    @State var cs: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -33,37 +35,50 @@ struct ConfirmTest: View {
                 }
             }
         } actions: {
-            Regular(text: Text("Regular action"), action: { })
-            Regular(
-                text: Text("Action"),
-                action: {}
-            )
-            Regular(
-                text: Text("Action with icon"),
-                image: .systemName("sparkles"),
-                action: {}
-            )
-            Destructive(
-                text: Text("Destructive action"),
-                action: {}
-            )
-            Cancel(text: Text("My cancel 1"))
-            Cancel(text: Text("My cancel 2"))
-            Regular(
-                text: Text("Thin small-sized text action")
-                    .font(.system(size: 10, weight: .thin))
-                    .foregroundStyle(.black),
-                action: {}
-            )
-            Regular(
-                text: Text("Big bold colored text action")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(.indigo),
-                action: {}
-            )
+            [
+                .action(
+                    text: Text("Action"),
+                    action: {}
+                ),
+                .action(
+                    text: Text("Action with icon"),
+                    image: .systemName("sparkles"),
+                    action: {}
+                ),
+                .destructive(
+                    text: Text("Destructive action"),
+                    action: {}
+                ),
+                .cancel(text: Text("My cancel 1")),
+                .cancel(text: Text("My cancel 2")),
+                .action(
+                    text: Text("Thin small-sized text action")
+                        .font(.system(size: 10, weight: .thin))
+                        .foregroundStyle(.black),
+                    action: {}
+                ),
+                .action(
+                    text: Text("Big bold colored text action")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundStyle(.indigo),
+                    action: {}
+                )
+            ]
         }
-        .popupActionTint(.blue)
-        .popupActionFonts(
+        .confirm(item: $cItem) {
+            [
+                .action(text: Text("Action 1"), action: {})
+            ]
+        }
+        .confirmationDialog("Title", isPresented: $cs) {
+            Button("Action 1") {}
+
+            Button("Action 2") {}
+
+            Button("Action 3") {}
+        }
+        .confirmTint(.blue)
+        .confirmFonts(
             regular: .system(size: 18, weight: .regular),
             cancel: .system(size: 18, weight: .semibold)
         )
@@ -109,11 +124,18 @@ fileprivate struct ExpandableHeader: View {
     }
 }
 
+extension ConfirmTest {
+    struct MyIdent: Identifiable {
+        let id: UUID
+        let value: Int
+    }
+}
+
 #Preview {
     ConfirmTest()
         .previewPopupKit(.confirm)
-        .popupActionTint(.blue)
-        .popupActionFonts(
+        .confirmTint(.blue)
+        .confirmFonts(
             regular: .system(size: 18, weight: .regular),
             cancel: .system(size: 18, weight: .semibold)
         )

@@ -15,6 +15,7 @@
 		1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A52C78884300838F1B /* MainSceneView.swift */; };
 		1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A72C7888D200838F1B /* NotificationTest.swift */; };
 		1E9C96AA2C78BC2400838F1B /* FullscreenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */; };
+		1EA294EA2CAD410D0012BFC9 /* ConfirmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA294E92CAD410D0012BFC9 /* ConfirmTest.swift */; };
 		1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */; };
 		1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED51B5A2C78860200CF04B9 /* ContentView.swift */; };
 		1ED51B5D2C78860200CF04B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED51B5C2C78860200CF04B9 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		1E9C96A52C78884300838F1B /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		1E9C96A72C7888D200838F1B /* NotificationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTest.swift; sourceTree = "<group>"; };
 		1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenTest.swift; sourceTree = "<group>"; };
+		1EA294E92CAD410D0012BFC9 /* ConfirmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTest.swift; sourceTree = "<group>"; };
 		1ED51B552C78860200CF04B9 /* PopupKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopupKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupKitExampleApp.swift; sourceTree = "<group>"; };
 		1ED51B5A2C78860200CF04B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				1E9C96A72C7888D200838F1B /* NotificationTest.swift */,
 				1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */,
 				1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */,
+				1EA294E92CAD410D0012BFC9 /* ConfirmTest.swift */,
 				1E69EDF22CC19252009E4932 /* PopupTest.swift */,
 			);
 			path = PopupKitExample;
@@ -188,6 +191,7 @@
 				1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */,
 				1E67909D2CC9071C00B809D2 /* ConfirmTest.swift in Sources */,
 				1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */,
+				1EA294EA2CAD410D0012BFC9 /* ConfirmTest.swift in Sources */,
 				1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */,
 				1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */,
 			);
