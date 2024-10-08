@@ -30,12 +30,6 @@ struct ContentView: View {
                     Label("Cover", systemImage: "rectangle.portrait.bottomhalf.inset.filled")
                 }
                 .tag(Tab.cover)
-            
-            ConfirmTest()
-                .tabItem {
-                    Label("Confirm", systemImage: "rectangle.grid.1x2.fill")
-                }
-                .tag(Tab.confirm)
         }
     }
 }
@@ -45,7 +39,6 @@ extension ContentView {
         case notification
         case fullscreen
         case cover
-        case confirm
     }
 }
 

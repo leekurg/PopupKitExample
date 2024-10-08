@@ -15,6 +15,5 @@ struct MainSceneView: View {
             .environmentObject(sceneDelegate.coverPresenter)
             .environmentObject(sceneDelegate.fullscreenPresenter)
             .environmentObject(sceneDelegate.notificationPresenter)
-            .environmentObject(sceneDelegate.confirmPresenter)
     }
 }

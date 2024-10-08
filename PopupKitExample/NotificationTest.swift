@@ -19,6 +19,7 @@ struct NotificationTest: View {
     @State var n2 = false
     @State var n3 = false
     @State var n4 = false
+    @State var n5: PopupKit.Notification?
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -42,6 +43,17 @@ struct NotificationTest: View {
                     n4.toggle()
                 }
                 .buttonStyle(.borderedProminent)
+                
+                HStack {
+                    Button("Show notification 5") {
+                        n5 = n5 == nil ? .success("Notification 5") : nil
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Circle()
+                        .fill(n5 == nil ? .red : .green)
+                        .frame(width: 20)
+                }
                 
                 Button("Pop to root") {
                     notificationPresenter.popToRoot()
@@ -172,10 +184,17 @@ struct NotificationTest: View {
                     .containerShape(RoundedRectangle(cornerRadius: 30))
                     .padding(.horizontal)
             }
+            .notification(item: $n5, expiration: .timeout(.seconds(3)))
         }
     }
     
     struct DestinationA: Hashable { }
+}
+
+extension PopupKit.Notification {
+    static func orange(_ msg: String) -> Self {
+        .custom(msg, systemImage: "gear", color: .orange)
+    }
 }
 
 struct NotificationViewA: View {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E2A9D8E2CA2137A00901B10 /* ConfirmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A9D8D2CA2137A00901B10 /* ConfirmTest.swift */; };
 		1E366AF82CA1E598008A649A /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E366AF72CA1E598008A649A /* PopupKit */; };
 		1E9C969F2C7887C700838F1B /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */; };
 		1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A02C78880300838F1B /* MySceneDelegate.swift */; };
@@ -22,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E2A9D8D2CA2137A00901B10 /* ConfirmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTest.swift; sourceTree = "<group>"; };
 		1E8E05172CADB87000B70B71 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../PopupKit; sourceTree = SOURCE_ROOT; };
 		1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
 		1E9C96A02C78880300838F1B /* MySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				1E9C96A72C7888D200838F1B /* NotificationTest.swift */,
 				1E9C96A92C78BC2400838F1B /* FullscreenTest.swift */,
 				1EDD57992C7B0F7700C9D1E3 /* CoverTest.swift */,
-				1E2A9D8D2CA2137A00901B10 /* ConfirmTest.swift */,
 			);
 			path = PopupKitExample;
 			sourceTree = "<group>";
@@ -183,7 +180,6 @@
 				1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */,
 				1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */,
 				1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */,
-				1E2A9D8E2CA2137A00901B10 /* ConfirmTest.swift in Sources */,
 				1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */,
 				1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */,
 			);
