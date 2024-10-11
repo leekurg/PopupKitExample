@@ -20,6 +20,7 @@ struct NotificationTest: View {
     @State var n3 = false
     @State var n4 = false
     @State var n5: PopupKit.Notification?
+    @State var n6 = false
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -54,6 +55,11 @@ struct NotificationTest: View {
                         .fill(n5 == nil ? .red : .green)
                         .frame(width: 20)
                 }
+                
+                Button("Show notification 6") {
+                    n6.toggle()
+                }
+                .buttonStyle(.borderedProminent)
                 
                 Button("Pop to root") {
                     notificationPresenter.popToRoot()
@@ -185,6 +191,9 @@ struct NotificationTest: View {
                     .padding(.horizontal)
             }
             .notification(item: $n5, expiration: .timeout(.seconds(3)))
+            .notification(isPresented: $n6, expiration: .timeout(.seconds(2))) {
+                AnimatedNotificationView(animationKind: .hide)
+            }
         }
     }
     
@@ -261,7 +270,52 @@ struct NotificationViewB: View {
     }
 }
 
+struct AnimatedNotificationView: View {
+    let animationKind: AnimationKind
+    @State var isAnimating: Bool = false
+
+    var body: some View {
+        HStack {
+            image
+                .font(.system(size: 25, weight: .bold))
+                .foregroundStyle(.purple)
+                .contentTransition(.symbolEffect(.replace))
+            
+            Text("Hidden items")
+                .font(.system(size: 14, weight: .bold, design: .rounded))
+                .minimumScaleFactor(0.5)
+        }
+        .frame(height: 50)
+        .padding(.horizontal, 10)
+        .background(.ultraThinMaterial, in: Capsule())
+        .compositingGroup()
+        .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
+        .onAppear {
+            Task {
+                try? await Task.sleep(for: .seconds(0.5))
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    isAnimating.toggle()
+                }
+            }
+        }
+    }
+    
+    var image: some View {
+        switch animationKind {
+        case .hide:
+            Image(systemName: isAnimating ? "eye" : "eye.slash")
+        case .unhide:
+            Image(systemName: isAnimating ? "eye.slash" : "eye")
+        }
+    }
+    
+    enum AnimationKind {
+        case hide, unhide
+    }
+}
+
 #Preview {
     NotificationTest()
         .previewPopupKit(.notification)
+//        .preferredColorScheme(.dark)
 }
