@@ -13,6 +13,8 @@ struct PopupTest: View {
     @State private var p11 = false
     @State private var p2 = false
     @State private var pText = false
+    @State private var alert = false
+    @State private var styled = false
     
     @State private var text = ""
     
@@ -35,6 +37,16 @@ struct PopupTest: View {
             Button("Popup Text") {
                 pText.toggle()
             }
+            
+            Button("System alert") {
+                alert.toggle()
+            }
+            .buttonStyle(.bordered)
+            
+            Button("Default style popup") {
+                styled.toggle()
+            }
+            .buttonStyle(.bordered)
         }
         .buttonStyle(.borderedProminent)
         .popup(isPresented: $p1, ignoresEdges: []) {
@@ -79,6 +91,38 @@ struct PopupTest: View {
         .popup(isPresented: $pText, outTapBehavior: .dismiss) {
             PopupText(text: $text)
         }
+        .alert("Title", isPresented: $alert) {
+            Button("Delete", role: .destructive) { }
+            
+            Button("With image", systemImage: "gear") { }
+            
+            Button("Regular", systemImage: "gear") { }
+            Button("Regular", systemImage: "gear") { }
+            Button("Regular", systemImage: "gear") { }
+            Button("Regular", systemImage: "gear") { }
+            Button("Regular", systemImage: "gear") { }
+            Button("Regular", systemImage: "gear") { }
+        } message: {
+            Text("This is an alert message")
+        }
+        .popup(isPresented: $styled) {
+            PopupKit.DefaultPopupView(
+                title: "Title",
+                msg: "This is a popup message"
+            ) {
+                [
+                    .action(
+                        text: Text("Action with icon"),
+                        image: .systemName("sparkles"),
+                        action: {}
+                    ),
+                    .destructive(
+                        text: Text("Destructive action"),
+                        action: {}
+                    )
+                ]
+            }
+        }
     }
 }
 
@@ -109,4 +153,6 @@ struct PopupText: View {
 #Preview {
     PopupTest()
         .previewPopupKit(.popup(ignoredSafeAreaEdges: []))
+        .preferredColorScheme(.dark)
+        .environment(\.popupActionTint, .blue)
 }
