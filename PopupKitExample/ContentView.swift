@@ -30,6 +30,12 @@ struct ContentView: View {
                     Label("Cover", systemImage: "rectangle.portrait.bottomhalf.inset.filled")
                 }
                 .tag(Tab.cover)
+            
+            PopupTest()
+                .tabItem {
+                    Label("Popup", systemImage: "rectangle.center.inset.fill")
+                }
+                .tag(Tab.popup)
         }
     }
 }
@@ -39,6 +45,7 @@ extension ContentView {
         case notification
         case fullscreen
         case cover
+        case popup
     }
 }
 
