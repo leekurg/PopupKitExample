@@ -14,7 +14,8 @@ struct PopupTest: View {
     @State private var p2 = false
     @State private var pText = false
     @State private var alert = false
-    @State private var styled = false
+    @State private var popupAlert = false
+    @State private var popupAlertCustom = false
     
     @State private var text = ""
     
@@ -43,8 +44,13 @@ struct PopupTest: View {
             }
             .buttonStyle(.bordered)
             
-            Button("Default style popup") {
-                styled.toggle()
+            Button("Popup alert text") {
+                popupAlert.toggle()
+            }
+            .buttonStyle(.bordered)
+            
+            Button("Popup alert custom") {
+                popupAlertCustom.toggle()
             }
             .buttonStyle(.bordered)
         }
@@ -105,24 +111,29 @@ struct PopupTest: View {
         } message: {
             Text("This is an alert message")
         }
-        .popup(isPresented: $styled) {
-            PopupKit.DefaultPopupView(
-                title: "Title",
-                msg: "This is a popup message"
-            ) {
-                [
-                    .action(
-                        text: Text("Action with icon"),
-                        image: .systemName("sparkles"),
-                        action: {}
-                    ),
-                    .destructive(
-                        text: Text("Destructive action"),
-                        action: {}
-                    )
-                ]
-            }
+        .popupAlert(
+            isPresented: $popupAlert,
+            title: "Title",
+            msg: "Message"
+        ) {
+            [
+                .action(
+                    text: Text("Action with icon"),
+                    image: .systemName("sparkles"),
+                    action: {}
+                ),
+                .destructive(
+                    text: Text("Destructive action"),
+                    action: {}
+                )
+            ]
         }
+        .popupAlert(isPresented: $popupAlertCustom) {
+            AnimatedSquare().padding(30)
+        } actions: {
+            []
+        }
+
     }
 }
 
@@ -147,6 +158,22 @@ struct PopupText: View {
         }
         .frame(width: 300, height: 250)
         .background(.mint, in: RoundedRectangle(cornerRadius: 25))
+    }
+}
+
+struct AnimatedSquare: View {
+    @State private var animated = false
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: animated ? 25 : 10)
+            .fill(animated ? .orange : .purple)
+            .frame(width: 50, height: 50)
+            .rotationEffect(.degrees(animated ? 720 : 0))
+            .onAppear {
+                withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                    animated.toggle()
+                }
+            }
     }
 }
 
