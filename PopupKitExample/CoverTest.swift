@@ -19,8 +19,6 @@ struct CoverTest: View {
     
     @EnvironmentObject var presenter: CoverPresenter
     
-    @EnvironmentObject var presenter: CoverPresenter
-    
     var body: some View {
         NavigationStack {
             ZStack {

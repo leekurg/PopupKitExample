@@ -5,7 +5,7 @@
 //  Created by Илья Аникин on 02.10.2024.
 //
 
-
+import PopupKit
 import SwiftUI
 
 struct ConfirmTest: View {
@@ -35,40 +35,36 @@ struct ConfirmTest: View {
                 }
             }
         } actions: {
-            [
-                .action(
-                    text: Text("Action"),
-                    action: {}
-                ),
-                .action(
-                    text: Text("Action with icon"),
-                    image: .systemName("sparkles"),
-                    action: {}
-                ),
-                .destructive(
-                    text: Text("Destructive action"),
-                    action: {}
-                ),
-                .cancel(text: Text("My cancel 1")),
-                .cancel(text: Text("My cancel 2")),
-                .action(
-                    text: Text("Thin small-sized text action")
-                        .font(.system(size: 10, weight: .thin))
-                        .foregroundStyle(.black),
-                    action: {}
-                ),
-                .action(
-                    text: Text("Big bold colored text action")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundStyle(.indigo),
-                    action: {}
-                )
-            ]
+            Regular(
+                text: Text("Action"),
+                action: {}
+            )
+            Regular(
+                text: Text("Action with icon"),
+                image: .systemName("sparkles"),
+                action: {}
+            )
+            Destructive(
+                text: Text("Destructive action"),
+                action: {}
+            )
+            Cancel(text: Text("My cancel 1"))
+            Cancel(text: Text("My cancel 2"))
+            Regular(
+                text: Text("Thin small-sized text action")
+                    .font(.system(size: 10, weight: .thin))
+                    .foregroundStyle(.black),
+                action: {}
+            )
+            Regular(
+                text: Text("Big bold colored text action")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundStyle(.indigo),
+                action: {}
+            )
         }
         .confirm(item: $cItem) {
-            [
-                .action(text: Text("Action 1"), action: {})
-            ]
+            Regular(text: Text("Action 1"), action: {})
         }
         .confirmationDialog("Title", isPresented: $cs) {
             Button("Action 1") {}
@@ -77,8 +73,8 @@ struct ConfirmTest: View {
 
             Button("Action 3") {}
         }
-        .confirmTint(.blue)
-        .confirmFonts(
+        .popupActionTint(.blue)
+        .popupActionFonts(
             regular: .system(size: 18, weight: .regular),
             cancel: .system(size: 18, weight: .semibold)
         )
@@ -134,8 +130,8 @@ extension ConfirmTest {
 #Preview {
     ConfirmTest()
         .previewPopupKit(.confirm)
-        .confirmTint(.blue)
-        .confirmFonts(
+        .popupActionTint(.blue)
+        .popupActionFonts(
             regular: .system(size: 18, weight: .regular),
             cancel: .system(size: 18, weight: .semibold)
         )

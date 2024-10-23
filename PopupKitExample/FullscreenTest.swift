@@ -30,33 +30,9 @@ struct FullscreenTest: View {
             .ignoresSafeArea()
             .navigationTitle("Fullscreen")
         }
-        .fullscreen(
-            isPresented: $ft,
-            background: .brown
-        ) {
-            TextFullscreen()
+        .fullscreen(isPresented: $f1, background: .ultraThinMaterial) {
+            ViewA(deep: 1)
         }
-        .fullscreen(
-            isPresented: $fNavigation,
-            background: .ultraThinMaterial,
-            ignoresEdges: [.all],
-            dismissalScroll: .none
-        ) {
-            NavigatableFullscreen()
-        }
-        .fullScreenCover(isPresented: $fs) {
-            TextField("", text: .constant(""))
-                .padding()
-                .background(.ultraThinMaterial, in: Capsule())
-                .padding()
-        }
-    }
-}
-
-extension FullscreenTest {
-    struct MyIdent: Identifiable {
-        let id: UUID
-        let value: Int
     }
 }
 
