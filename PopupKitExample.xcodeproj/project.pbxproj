@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E366AF82CA1E598008A649A /* PopupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E366AF72CA1E598008A649A /* PopupKit */; };
+		1E67909D2CC9071C00B809D2 /* ConfirmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67909C2CC9071C00B809D2 /* ConfirmTest.swift */; };
 		1E69EDF32CC19252009E4932 /* PopupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E69EDF22CC19252009E4932 /* PopupTest.swift */; };
 		1E9C969F2C7887C700838F1B /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */; };
 		1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C96A02C78880300838F1B /* MySceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E67909C2CC9071C00B809D2 /* ConfirmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTest.swift; sourceTree = "<group>"; };
 		1E69EDF22CC19252009E4932 /* PopupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTest.swift; sourceTree = "<group>"; };
 		1E8E05172CADB87000B70B71 /* PopupKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopupKit; path = ../PopupKit; sourceTree = SOURCE_ROOT; };
 		1E9C969E2C7887C700838F1B /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		1ED51B572C78860200CF04B9 /* PopupKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				1E67909C2CC9071C00B809D2 /* ConfirmTest.swift */,
 				1E8E05172CADB87000B70B71 /* PopupKit */,
 				1ED51B582C78860200CF04B9 /* PopupKitExampleApp.swift */,
 				1ED51B5A2C78860200CF04B9 /* ContentView.swift */,
@@ -183,6 +186,7 @@
 				1E9C96AA2C78BC2400838F1B /* FullscreenTest.swift in Sources */,
 				1ED51B5B2C78860200CF04B9 /* ContentView.swift in Sources */,
 				1ED51B592C78860200CF04B9 /* PopupKitExampleApp.swift in Sources */,
+				1E67909D2CC9071C00B809D2 /* ConfirmTest.swift in Sources */,
 				1E9C96A62C78884300838F1B /* MainSceneView.swift in Sources */,
 				1E9C96A82C7888D200838F1B /* NotificationTest.swift in Sources */,
 				1E9C96A12C78880300838F1B /* MySceneDelegate.swift in Sources */,

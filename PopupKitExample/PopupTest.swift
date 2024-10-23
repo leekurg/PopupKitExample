@@ -116,24 +116,21 @@ struct PopupTest: View {
             title: "Title",
             msg: "Message"
         ) {
-            [
-                .action(
-                    text: Text("Action with icon"),
-                    image: .systemName("sparkles"),
-                    action: {}
-                ),
-                .destructive(
-                    text: Text("Destructive action"),
-                    action: {}
-                )
-            ]
+            Regular(
+                text: Text("Action with icon"),
+                image: .systemName("sparkles"),
+                action: {}
+            )
+            Destructive(
+                text: Text("Destructive action"),
+                action: {}
+            )
         }
         .popupAlert(isPresented: $popupAlertCustom) {
             AnimatedSquare().padding(30)
         } actions: {
-            []
+            
         }
-
     }
 }
 
