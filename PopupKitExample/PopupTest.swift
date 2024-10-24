@@ -72,83 +72,59 @@ struct PopupTest: View {
         .popup(isPresented: $stacked1) {
             PopupCongrats()
         }
+        .popup(isPresented: $textInput, outTapBehavior: .dismiss) {
+            PopupText(text: $text)
+        }
+        .popup(isPresented: $fullscreen) {
+            PopupLarge()
+        }
+        .popupAlert(
+            isPresented: $alert,
+            title: "Present an alert🌞!",
+            msg: "Style actions and present alert in stack!"
+        ) {
+            Regular(
+                text: Text("Action with icon"),
+                image: .systemName("sparkles"),
+                action: {}
+            )
+            Destructive(
+                text: Text("Destructive action"),
+                action: {}
+            )
+            Regular(
+                text: Text("Rich")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.indigo)
+                ,
+                action: {}
+            )
+            Regular(
+                text: Text("Action's")
+                    .font(.system(size: 18, weight: .semibold, design: .monospaced))
+                    .foregroundStyle(.cyan)
+                ,
+                action: {}
+            )
+            Regular(
+                text: Text("Customization")
+                    .font(.system(size: 15, weight: .thin, design: .monospaced))
+                    .foregroundStyle(.mint)
+                ,
+                action: {}
+            )
+        }
+        .popupAlert(isPresented: $alertWithContent) {
+            PopupCustom()
+                .padding(.vertical, 20)
+        } actions: {
+            Regular(
+                text: Text("Wow").foregroundStyle(.purple),
+                action: {}
+            )
+        }
+
     }
-//        .popup(isPresented: $p1, ignoresEdges: []) {
-//            VStack {
-//                Text("Popup #1").font(.title2)
-//                
-//                Button("Button") {
-//                    p11.toggle()
-//                }
-//                .buttonStyle(.borderedProminent)
-//                
-//                Button("Close") {
-//                    presenter.popLast()
-//                }
-//                .buttonStyle(.borderedProminent)
-//            }
-//            .frame(width: 250, height: 200)
-//            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
-//        }
-//        .popup(isPresented: $p11, outTapBehavior: .dismiss) {
-//            RoundedRectangle(cornerRadius: 20)
-//                .fill(.indigo)
-//                .frame(width: 200, height: 400)
-//                .overlay {
-//                    Button("Close") {
-//                        p11 = false
-//                    }
-//                    .buttonStyle(.borderedProminent)
-//                }
-//        }
-//        .popup(isPresented: $p2, ignoresEdges: .top) {
-//            Color.brown
-//                .clipShape(RoundedRectangle(cornerRadius: 20))
-//                .padding(.horizontal)
-//                .overlay {
-//                    Button("Close") {
-//                        p2 = false
-//                    }
-//                    .buttonStyle(.borderedProminent)
-//                }
-//        }
-//        .popup(isPresented: $pText, outTapBehavior: .dismiss) {
-//            PopupText(text: $text)
-//        }
-//        .alert("Title", isPresented: $alert) {
-//            Button("Delete", role: .destructive) { }
-//            
-//            Button("With image", systemImage: "gear") { }
-//            
-//            Button("Regular", systemImage: "gear") { }
-//            Button("Regular", systemImage: "gear") { }
-//            Button("Regular", systemImage: "gear") { }
-//            Button("Regular", systemImage: "gear") { }
-//            Button("Regular", systemImage: "gear") { }
-//            Button("Regular", systemImage: "gear") { }
-//        } message: {
-//            Text("This is an alert message")
-//        }
-//        .popupAlert(
-//            isPresented: $popupAlert,
-//            title: "Title",
-//            msg: "Message"
-//        ) {
-//            Regular(
-//                text: Text("Action with icon"),
-//                image: .systemName("sparkles"),
-//                action: {}
-//            )
-//            Destructive(
-//                text: Text("Destructive action"),
-//                action: {}
-//            )
-//        }
-//        .popupAlert(isPresented: $popupAlertCustom) {
-//            AnimatedSquare().padding(30)
-//        } actions: {
-//            
-//        }
 }
 
 struct PopupCongrats: View {
@@ -240,17 +216,124 @@ struct PopupStacked: View {
 struct PopupText: View {
     @Binding var text: String
 
+    @EnvironmentObject var presenter: PopupPresenter
+
     var body: some View {
         VStack {
-            Text("Input: \(text)")
-            
+            Text("Get text input from the user!")
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .padding(20)
+
             TextField("", text: $text, axis: .horizontal)
                 .padding()
                 .background(.ultraThinMaterial, in: Capsule())
                 .padding()
+
+            Button("Done") {
+                presenter.popLast()
+            }
+            .tint(.purple)
         }
         .frame(width: 300, height: 250)
         .background(.mint, in: RoundedRectangle(cornerRadius: 25))
+    }
+}
+
+struct PopupLarge: View {
+    @EnvironmentObject var presenter: PopupPresenter
+
+    let red = Color(red: 0.7, green: 0.2, blue: 0.2)
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(.ultraThinMaterial)
+            .overlay {
+                VStack {
+                    Text("Screen-wide popup!")
+                        .font(.system(size: 27, weight: .bold, design: .rounded))
+                        .padding(.bottom, 10)
+
+                    Text("respecting").foregroundStyle(Color(red: 0.3, green: 0.3, blue: 1))
+                    Text("or").foregroundStyle(.secondary)
+                    Text("ignoring").foregroundStyle(red)
+                    Text("the safe area").foregroundStyle(.secondary)
+
+                    Text("and paddings").foregroundStyle(.secondary)
+                }
+                .font(.system(size: 23, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+
+            }
+            .foregroundStyle(.black)
+            .overlay(alignment: .topTrailing) {
+                CloseButton {
+                    presenter.popLast()
+                }
+                .padding()
+            }
+            .overlay(alignment: .top) {
+                Text("respects safe area")
+                    .font(.system(.caption, design: .monospaced))
+            }
+            .overlay(alignment: .bottom) {
+                Text("respects safe area")
+                    .font(.system(.caption, design: .monospaced))
+            }
+            .overlay(alignment: .trailing) {
+                Text("padding 20.0")
+                    .font(.system(.caption, design: .monospaced))
+                    .fixedSize()
+                    .rotationEffect(.degrees(90))
+                    .frame(width: 20)
+            }
+            .overlay(alignment: .leading) {
+                Text("padding 20.0")
+                    .font(.system(.caption, design: .monospaced))
+                    .fixedSize()
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 20)
+            }
+            .foregroundStyle(Color(red: 0.3, green: 0.3, blue: 1))
+            .padding(.horizontal)
+    }
+}
+
+struct PopupCustom: View {
+    @State private var rolling = false
+    @State private var scaling = false
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Custom dynamically-sized header!")
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+
+            HStack(spacing: 30) {
+                square
+
+                Button("Scale") {
+                    withAnimation(.spring) {
+                        scaling.toggle()
+                    }
+                }
+                .buttonStyle(.bordered)
+            }
+        }
+        .tint(.purple)
+        .frame(width: 300)
+    }
+
+    var square: some View {
+        RoundedRectangle(cornerRadius: rolling ? 25 : 10)
+            .fill(rolling ? .orange : .mint)
+            .frame(width: scaling ? 50 * 2 : 50, height: scaling ? 50 * 2 : 50)
+            .rotationEffect(.degrees(rolling ? 720 : 0))
+            .onAppear {
+                withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                    rolling.toggle()
+                }
+            }
     }
 }
 
@@ -269,8 +352,6 @@ struct AnimatedSquare: View {
             }
     }
 }
-
-
 
 #Preview {
     PopupTest()

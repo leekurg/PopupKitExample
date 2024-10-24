@@ -62,15 +62,8 @@ fileprivate struct ViewA: View {
                 .foregroundStyle(.blue)
         }
         .overlay(alignment: .topTrailing) {
-            Button {
+            CloseButton {
                 presenter.popLast()
-            } label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 15, height: 15)
-                    .padding(10)
-                    .background(.white.opacity(0.2), in: Circle())
-                    .foregroundStyle(.gray)
             }
             .padding()
         }
